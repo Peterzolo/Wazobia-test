@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+
+
+import React from "react";
 import { styled } from "styled-components";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LinkIcon from "@mui/icons-material/Link";
@@ -13,22 +15,6 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 
 const IconsComponent: React.FC = () => {
-  const [textAlignment, setTextAlignment] = useState<
-    "left" | "right" | "center"
-  >("left");
-
-  const handleAlignLeft = () => {
-    setTextAlignment("left");
-  };
-
-  const handleAlignCenter = () => {
-    setTextAlignment("center");
-  };
-
-  const handleAlignRight = () => {
-    setTextAlignment("right");
-  };
-
   return (
     <>
       <MainWrap>
@@ -41,20 +27,9 @@ const IconsComponent: React.FC = () => {
           <PhotoCameraBackIcon className="icon" />
         </p>
         <p className="icon-wrap">
-          <FormatAlignLeftIcon
-            className={`icon-left ${textAlignment === "left" ? "active" : ""}`}
-            onClick={handleAlignLeft}
-          />
-          <FormatAlignRightIcon
-            className={`icon-middle ${
-              textAlignment === "right" ? "active" : ""
-            }`}
-            onClick={handleAlignRight}
-          />
-          <FormatAlignCenterIcon
-            className={`icon ${textAlignment === "center" ? "active" : ""}`}
-            onClick={handleAlignCenter}
-          />
+          <FormatAlignLeftIcon className="icon-left" />
+          <FormatAlignRightIcon className="icon-middle" />
+          <FormatAlignCenterIcon className="icon" />
         </p>
         <p className="icon-wrap">
           <FormatBoldIcon className="icon-left" />
@@ -67,18 +42,7 @@ const IconsComponent: React.FC = () => {
         </p>
       </MainWrap>
       <CommentWrapper>
-        <p className={`comment ${textAlignment}`}>
-          {" "}
-          {/* Add textAlignment class to align the text */}
-          It all begins with an idea. Maybe you want to launch a business. Maybe
-          you want to turn a hobby into something more. Or maybe you have a
-          creative project to share with the world. Whatever it is, the way you
-          tell your story online can make all the difference.
-        </p>
-      </CommentWrapper>
-      <CommentWrapper>
-        <div className="comment-title">It all begins with idea.</div>
-        <p className={`comment ${textAlignment}`}>
+        <p className="comment">
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
           creative project to share with the world. Whatever it is, the way you
@@ -88,7 +52,17 @@ const IconsComponent: React.FC = () => {
 
       <CommentWrapper>
         <div className="comment-title">It all begins with idea.</div>
-        <p className={`comment ${textAlignment}`}>
+        <p className="comment">
+          It all begins with an idea. Maybe you want to launch a business. Maybe
+          you want to turn a hobby into something more. Or mayby you have a
+          creative project to share with the world. Whatever it is, the way you
+          tell your story online can make all the difference.
+        </p>
+      </CommentWrapper>
+
+      <CommentWrapper>
+        <div className="comment-title">It all begins with idea.</div>
+        <p className="comment">
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
           creative project to share with the world. Whatever it is, the way you
@@ -98,7 +72,6 @@ const IconsComponent: React.FC = () => {
     </>
   );
 };
-
 const MainWrap = styled.div`
   margin-left: 20px;
   padding: 10px 0px;
@@ -138,15 +111,6 @@ const CommentWrapper = styled.div`
   }
   .comment {
     font-size: 14px;
-    &.left {
-      text-align: left;
-    }
-    &.center {
-      text-align: center;
-    }
-    &.right {
-      text-align: right;
-    }
   }
 `;
 
