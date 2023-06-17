@@ -13,7 +13,7 @@ const Home: React.FC = () => {
     <Container style={{ marginTop: "80px", marginBottom: "20px" }}>
       <Row>
         <Col md={3}></Col>
-        <Col md={5}>
+        <Col md={6}>
           <HomeWrapper>
             <BlankPage />
             <Title />
@@ -24,7 +24,7 @@ const Home: React.FC = () => {
             <Footer />
           </HomeWrapper>
         </Col>
-        <Col md={4}></Col>
+        <Col md={3}></Col>
       </Row>
     </Container>
   );
