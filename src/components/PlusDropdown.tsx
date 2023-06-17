@@ -1,6 +1,8 @@
 import React from "react";
 import { styled } from "styled-components";
 import PhotoCameraBackIcon from "@mui/icons-material/PhotoCameraBack";
+import VideoCameraFrontIcon from "@mui/icons-material/VideoCameraFront";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 const PlusDropdown: React.FC = () => {
   return (
@@ -14,17 +16,17 @@ const PlusDropdown: React.FC = () => {
         </div>
       </div>
       <div className="item-wrap">
-        <PhotoCameraBackIcon className="icon" />
+        <VideoCameraFrontIcon className="icon" />
         <div className="text-wrap">
-          <h5 className="text">Picture</h5>
-          <p className="extra">jpeg,png</p>
+          <h5 className="text">Video</h5>
+          <p className="extra">Embed a YouTube video</p>
         </div>
       </div>
       <div className="item-wrap">
-        <PhotoCameraBackIcon className="icon" />
+        <GroupsIcon className="icon" />
         <div className="text-wrap">
-          <h5 className="text">Picture</h5>
-          <p className="extra">jpeg,png</p>
+          <h5 className="text">Social</h5>
+          <p className="extra">Embed a Facebook link</p>
         </div>
       </div>
     </MainWrap>
