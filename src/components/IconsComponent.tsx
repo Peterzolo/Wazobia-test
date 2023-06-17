@@ -12,33 +12,21 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 
-interface CommentWrapperProps {
-  alignLeft?: boolean;
-  alignRight?: boolean;
-  alignCenter?: boolean;
-}
-
 const IconsComponent: React.FC = () => {
-  const [alignLeft, setAlignLeft] = useState(false);
-  const [alignRight, setAlignRight] = useState(false);
-  const [alignCenter, setAlignCenter] = useState(false);
+  const [textAlignment, setTextAlignment] = useState<
+    "left" | "right" | "center"
+  >("left");
 
-  const handleAlignLeftClick = () => {
-    setAlignLeft(!alignLeft);
-    setAlignRight(false);
-    setAlignCenter(false);
+  const handleAlignLeft = () => {
+    setTextAlignment("left");
   };
 
-  const handleAlignRightClick = () => {
-    setAlignRight(!alignRight);
-    setAlignLeft(false);
-    setAlignCenter(false);
+  const handleAlignCenter = () => {
+    setTextAlignment("center");
   };
 
-  const handleAlignCenterClick = () => {
-    setAlignCenter(!alignCenter);
-    setAlignLeft(false);
-    setAlignRight(false);
+  const handleAlignRight = () => {
+    setTextAlignment("right");
   };
 
   return (
@@ -46,23 +34,26 @@ const IconsComponent: React.FC = () => {
       <MainWrap>
         <p className="icon-wrap">
           <div className="text">Paragraph</div>
-          <ExpandMoreIcon className="icon" />
+          <ExpandMoreIcon className="icon" />{" "}
         </p>
         <p className="icon-wrap">
           <LinkIcon className="icon-left" />
           <PhotoCameraBackIcon className="icon" />
         </p>
-        <p className="icon-wrap" onClick={handleAlignLeftClick}>
+        <p className="icon-wrap">
           <FormatAlignLeftIcon
-            className={`icon-left${alignLeft ? " active" : ""}`}
+            className={`icon-left ${textAlignment === "left" ? "active" : ""}`}
+            onClick={handleAlignLeft}
           />
           <FormatAlignRightIcon
-            className={`icon-middle${alignRight ? " active" : ""}`}
-            onClick={handleAlignRightClick}
+            className={`icon-middle ${
+              textAlignment === "right" ? "active" : ""
+            }`}
+            onClick={handleAlignRight}
           />
           <FormatAlignCenterIcon
-            className={`icon${alignCenter ? " active" : ""}`}
-            onClick={handleAlignCenterClick}
+            className={`icon ${textAlignment === "center" ? "active" : ""}`}
+            onClick={handleAlignCenter}
           />
         </p>
         <p className="icon-wrap">
@@ -75,34 +66,12 @@ const IconsComponent: React.FC = () => {
           <FormatIndentDecreaseIcon className="icon" />
         </p>
       </MainWrap>
-      <CommentWrapper
-        alignLeft={alignLeft}
-        alignRight={alignRight}
-        alignCenter={alignCenter}
-      >
-        <p className="comment">
-          It all begins with an idea. Maybe you want to launch a business. Maybe
-          you want to turn a hobby into something more. Or mayby you have a
-          creative project to share with the world. Whatever it is, the way you
-          tell your story online can make all the difference.
-        </p>
-      </CommentWrapper>
-
       <CommentWrapper>
-        <div className="comment-title">It all begins with an idea.</div>
-        <p className="comment">
+        <p className={`comment ${textAlignment}`}>
+          {" "}
+          {/* Add textAlignment class to align the text */}
           It all begins with an idea. Maybe you want to launch a business. Maybe
-          you want to turn a hobby into something more. Or mayby you have a
-          creative project to share with the world. Whatever it is, the way you
-          tell your story online can make all the difference.
-        </p>
-      </CommentWrapper>
-
-      <CommentWrapper>
-        <div className="comment-title">It all begins with an idea.</div>
-        <p className="comment">
-          It all begins with an idea. Maybe you want to launch a business. Maybe
-          you want to turn a hobby into something more. Or mayby you have a
+          you want to turn a hobby into something more. Or maybe you have a
           creative project to share with the world. Whatever it is, the way you
           tell your story online can make all the difference.
         </p>
@@ -140,27 +109,25 @@ const MainWrap = styled.div`
       font-size: 16px;
     }
   }
-  .active {
-    color: blue; /* Adjust the color as desired */
-  }
 `;
 
-const CommentWrapper = styled.div<CommentWrapperProps>`
+const CommentWrapper = styled.div`
   padding: 5px 15px;
   margin-top: 5px;
-  cursor: pointer;
-  text-align: ${(props) => {
-    if (props.alignLeft) return "left";
-    if (props.alignRight) return "right";
-    if (props.alignCenter) return "center";
-    return "inherit";
-  }};
-
   .comment-title {
     font-weight: 700;
   }
   .comment {
     font-size: 14px;
+    &.left {
+      text-align: left;
+    }
+    &.center {
+      text-align: center;
+    }
+    &.right {
+      text-align: right;
+    }
   }
 `;
 
