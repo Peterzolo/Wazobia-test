@@ -7,6 +7,7 @@ import BulletPoint from "../components/BulletPoint";
 import VerticalLine from "../components/VerticalLine";
 import PlusIcon from "../components/PlusIcon";
 import Footer from "../components/Footer";
+import Button from "../components/Button";
 
 const Home: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const Home: React.FC = () => {
             <VerticalLine />
             <PlusIcon />
             <Footer />
+            <Button />
           </HomeWrapper>
         </Col>
         <Col md={3}></Col>

@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+
+
+import React from "react";
 import { styled } from "styled-components";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LinkIcon from "@mui/icons-material/Link";
@@ -12,58 +14,22 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 
-interface CommentWrapperProps {
-  alignLeft?: boolean;
-  alignRight?: boolean;
-  alignCenter?: boolean;
-}
-
 const IconsComponent: React.FC = () => {
-  const [alignLeft, setAlignLeft] = useState(false);
-  const [alignRight, setAlignRight] = useState(false);
-  const [alignCenter, setAlignCenter] = useState(false);
-
-  const handleAlignLeftClick = () => {
-    setAlignLeft(!alignLeft);
-    setAlignRight(false);
-    setAlignCenter(false);
-  };
-
-  const handleAlignRightClick = () => {
-    setAlignRight(!alignRight);
-    setAlignLeft(false);
-    setAlignCenter(false);
-  };
-
-  const handleAlignCenterClick = () => {
-    setAlignCenter(!alignCenter);
-    setAlignLeft(false);
-    setAlignRight(false);
-  };
-
   return (
     <>
       <MainWrap>
         <p className="icon-wrap">
           <div className="text">Paragraph</div>
-          <ExpandMoreIcon className="icon" />
+          <ExpandMoreIcon className="icon" />{" "}
         </p>
         <p className="icon-wrap">
           <LinkIcon className="icon-left" />
           <PhotoCameraBackIcon className="icon" />
         </p>
-        <p className="icon-wrap" onClick={handleAlignLeftClick}>
-          <FormatAlignLeftIcon
-            className={`icon-left${alignLeft ? " active" : ""}`}
-          />
-          <FormatAlignRightIcon
-            className={`icon-middle${alignRight ? " active" : ""}`}
-            onClick={handleAlignRightClick}
-          />
-          <FormatAlignCenterIcon
-            className={`icon${alignCenter ? " active" : ""}`}
-            onClick={handleAlignCenterClick}
-          />
+        <p className="icon-wrap">
+          <FormatAlignLeftIcon className="icon-left" />
+          <FormatAlignRightIcon className="icon-middle" />
+          <FormatAlignCenterIcon className="icon" />
         </p>
         <p className="icon-wrap">
           <FormatBoldIcon className="icon-left" />
@@ -75,11 +41,7 @@ const IconsComponent: React.FC = () => {
           <FormatIndentDecreaseIcon className="icon" />
         </p>
       </MainWrap>
-      <CommentWrapper
-        alignLeft={alignLeft}
-        alignRight={alignRight}
-        alignCenter={alignCenter}
-      >
+      <CommentWrapper>
         <p className="comment">
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
@@ -89,7 +51,7 @@ const IconsComponent: React.FC = () => {
       </CommentWrapper>
 
       <CommentWrapper>
-        <div className="comment-title">It all begins with an idea.</div>
+        <div className="comment-title">It all begins with idea.</div>
         <p className="comment">
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
@@ -99,7 +61,7 @@ const IconsComponent: React.FC = () => {
       </CommentWrapper>
 
       <CommentWrapper>
-        <div className="comment-title">It all begins with an idea.</div>
+        <div className="comment-title">It all begins with idea.</div>
         <p className="comment">
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
@@ -110,7 +72,6 @@ const IconsComponent: React.FC = () => {
     </>
   );
 };
-
 const MainWrap = styled.div`
   margin-left: 20px;
   padding: 10px 0px;
@@ -140,22 +101,11 @@ const MainWrap = styled.div`
       font-size: 16px;
     }
   }
-  .active {
-    color: blue; /* Adjust the color as desired */
-  }
 `;
 
-const CommentWrapper = styled.div<CommentWrapperProps>`
+const CommentWrapper = styled.div`
   padding: 5px 15px;
   margin-top: 5px;
-  cursor: pointer;
-  text-align: ${(props) => {
-    if (props.alignLeft) return "left";
-    if (props.alignRight) return "right";
-    if (props.alignCenter) return "center";
-    return "inherit";
-  }};
-
   .comment-title {
     font-weight: 700;
   }

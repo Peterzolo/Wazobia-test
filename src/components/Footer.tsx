@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 const Footer: React.FC = () => {
   return (
     <MainWrap>
-      <p className="word-cound">0/1000 words</p>
+      <p className="word-count">0/1000 words</p>
     </MainWrap>
   );
 };
@@ -15,6 +15,10 @@ const MainWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  .word-count {
+    font-size: 12px;
+    color: #8c8c8c;
+  }
 `;
 
 export default Footer;
