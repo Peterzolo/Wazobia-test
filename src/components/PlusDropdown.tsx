@@ -6,42 +6,49 @@ import GroupsIcon from "@mui/icons-material/Groups";
 
 const PlusDropdown: React.FC = () => {
   return (
-    <MainWrap>
+    <MainContainer>
       <div className="title">EMBEDS</div>
-      <div className="item-wrap">
-        <PhotoCameraBackIcon className="icon" />
-        <div className="text-wrap">
-          <h5 className="text">Picture</h5>
-          <p className="extra">jpeg,png</p>
+      <MainWrap>
+        <div className="item-wrap">
+          <PhotoCameraBackIcon className="icon" />
+          <div className="text-wrap">
+            <h5 className="text">Picture</h5>
+            <p className="extra">jpeg,png</p>
+          </div>
         </div>
-      </div>
-      <div className="item-wrap">
-        <VideoCameraFrontIcon className="icon" />
-        <div className="text-wrap">
-          <h5 className="text">Video</h5>
-          <p className="extra">Embed a YouTube video</p>
+        <div className="item-wrap">
+          <VideoCameraFrontIcon className="icon" />
+          <div className="text-wrap">
+            <h5 className="text">Video</h5>
+            <p className="extra">Embed a YouTube video</p>
+          </div>
         </div>
-      </div>
-      <div className="item-wrap">
-        <GroupsIcon className="icon" />
-        <div className="text-wrap">
-          <h5 className="text">Social</h5>
-          <p className="extra">Embed a Facebook link</p>
+        <div className="item-wrap">
+          <GroupsIcon className="icon" />
+          <div className="text-wrap">
+            <h5 className="text">Social</h5>
+            <p className="extra">Embed a Facebook link</p>
+          </div>
         </div>
-      </div>
-    </MainWrap>
+      </MainWrap>
+    </MainContainer>
   );
 };
+
+const MainContainer = styled.div`
+  .title {
+    color: #595959;
+    font-weight: 500;
+    margin-left: 25px;
+  }
+`;
 
 const MainWrap = styled.div`
   border: 1px solid #d9d9d9;
   margin-left: 20px;
   padding: 0px 10px;
   margin-top: 10px;
-  .title {
-    color: #595959;
-    font-weight: 500;
-  }
+
   .item-wrap {
     display: flex;
     width: 400px;
