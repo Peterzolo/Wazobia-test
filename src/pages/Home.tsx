@@ -9,7 +9,7 @@ import PlusIcon from "../components/PlusIcon";
 
 const Home: React.FC = () => {
   return (
-    <Container style={{ marginTop: "80px" }}>
+    <Container style={{ marginTop: "80px", marginBottom: "20px" }}>
       <Row>
         <Col md={3}></Col>
         <Col md={5}>
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
 
 const HomeWrapper = styled.div`
   margin: 0 auto;
-  height: 500px;
+  height: auto;
   border: 1px solid #f0f0f0;
   box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
 
