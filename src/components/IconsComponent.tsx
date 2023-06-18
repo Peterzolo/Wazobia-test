@@ -148,6 +148,7 @@ const IconsComponent: React.FC = () => {
           <li className="text" style={{ listStyleType: getListStyleType() }}>
             Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
           </li>
+
           <li className="text" style={{ listStyleType: getListStyleType() }}>
             Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
           </li>
