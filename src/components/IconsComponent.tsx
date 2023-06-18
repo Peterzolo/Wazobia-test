@@ -17,6 +17,9 @@ const IconsComponent: React.FC = () => {
     "left" | "right" | "center"
   >("left");
 
+  const [isBold, setIsBold] = useState(false);
+  const [isItalic, setIsItalic] = useState(false);
+
   const handleAlignLeft = () => {
     setTextAlignment("left");
   };
@@ -27,6 +30,14 @@ const IconsComponent: React.FC = () => {
 
   const handleAlignRight = () => {
     setTextAlignment("right");
+  };
+
+  const handleBold = () => {
+    setIsBold(!isBold);
+  };
+
+  const handleItalic = () => {
+    setIsItalic(!isItalic);
   };
 
   return (
@@ -57,8 +68,14 @@ const IconsComponent: React.FC = () => {
           />
         </p>
         <p className="icon-wrap">
-          <FormatBoldIcon className="icon-left" />
-          <FormatItalicIcon className="icon" />
+          <FormatBoldIcon
+            className={`icon-left ${isBold ? "active" : ""}`}
+            onClick={handleBold}
+          />
+          <FormatItalicIcon
+            className={`icon ${isItalic ? "active" : ""}`}
+            onClick={handleItalic}
+          />
         </p>
         <p className="icon-wrap">
           <FormatListBulletedIcon className="icon-left" />
@@ -67,7 +84,11 @@ const IconsComponent: React.FC = () => {
         </p>
       </MainWrap>
       <CommentWrapper>
-        <p className={`comment ${textAlignment}`}>
+        <p
+          className={`comment ${textAlignment} ${isBold ? "bold" : ""} ${
+            isItalic ? "italic" : ""
+          }`}
+        >
           {" "}
           {/* Add textAlignment class to align the text */}
           It all begins with an idea. Maybe you want to launch a business. Maybe
@@ -78,7 +99,11 @@ const IconsComponent: React.FC = () => {
       </CommentWrapper>
       <CommentWrapper>
         <div className="comment-title">It all begins with idea.</div>
-        <p className={`comment ${textAlignment}`}>
+        <p
+          className={`comment ${textAlignment} ${isBold ? "bold" : ""} ${
+            isItalic ? "italic" : ""
+          }`}
+        >
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
           creative project to share with the world. Whatever it is, the way you
@@ -88,7 +113,11 @@ const IconsComponent: React.FC = () => {
 
       <CommentWrapper>
         <div className="comment-title">It all begins with idea.</div>
-        <p className={`comment ${textAlignment}`}>
+        <p
+          className={`comment ${textAlignment} ${isBold ? "bold" : ""} ${
+            isItalic ? "italic" : ""
+          }`}
+        >
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
           creative project to share with the world. Whatever it is, the way you
@@ -146,6 +175,12 @@ const CommentWrapper = styled.div`
     }
     &.right {
       text-align: right;
+    }
+    &.bold {
+      font-weight: bold;
+    }
+    &.italic {
+      font-style: italic;
     }
   }
 `;
