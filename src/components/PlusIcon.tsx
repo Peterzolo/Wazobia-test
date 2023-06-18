@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import AddIcon from "@mui/icons-material/Add";
 import PlusDropdown from "./PlusDropdown";
 
 const PlusIcon = () => {
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
   return (
     <MainWrap>
-      <AddIcon className="plus-icon" />
-      <PlusDropdown />
+      <AddIcon className="plus-icon" onClick={toggleDropdown} />
+      {dropdownVisible && <PlusDropdown />}
     </MainWrap>
   );
 };

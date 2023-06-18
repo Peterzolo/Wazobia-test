@@ -19,7 +19,6 @@ const Home: React.FC = () => {
             <BlankPage />
             <Title />
             <IconsComponent />
-            {/* <BulletPoint /> */}
             <VerticalLine />
             <PlusIcon />
             <Footer />
