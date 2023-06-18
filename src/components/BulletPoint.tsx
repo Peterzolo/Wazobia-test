@@ -1,45 +1,46 @@
 import React from "react";
 import { styled } from "styled-components";
-import CircleIcon from "@mui/icons-material/Circle";
 
-const BulletPoint: React.FC = () => {
+interface BulletPointProps {
+  bulletPointStyle: string;
+}
+
+const BulletPoint: React.FC<BulletPointProps> = ({ bulletPointStyle }) => {
   return (
     <MainWrap>
-      <div className="text-wrap">
-        <CircleIcon className="icon" />
-        <p className="text">
+      <ul
+        className={`text-wrap ${bulletPointStyle === "circle" ? "circle" : ""}`}
+      >
+        <li className="text">
           Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
-        </p>
-      </div>
-      <div className="text-wrap">
-        <CircleIcon className="icon" />
-        <p className="text">
+        </li>
+        <li className="text">
           Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
-        </p>
-      </div>
-      <div className="text-wrap">
-        <CircleIcon className="icon" />
-        <p className="text">
+        </li>
+        <li className="text">
           Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
-        </p>
-      </div>
+        </li>
+        <li className="text">
+          Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
+        </li>
+      </ul>
     </MainWrap>
   );
 };
 
 const MainWrap = styled.div`
-  padding: 5px 15px;
   .text-wrap {
     display: flex;
-    align-items: center;
-    .icon {
-      font-size: 8px;
-      margin-right: 10px;
-    }
+    flex-direction: column;
     .text {
-      font-size: 12px;
-      margin-top: 5px;
+      list-style-type: none;
+    }
+    &.circle {
+      .text {
+        list-style-type: circle;
+      }
     }
   }
 `;
+
 export default BulletPoint;

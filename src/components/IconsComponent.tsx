@@ -19,6 +19,7 @@ const IconsComponent: React.FC = () => {
 
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
+  const [isListBulleted, setIsListBulleted] = useState(false);
 
   const handleAlignLeft = () => {
     setTextAlignment("left");
@@ -38,6 +39,14 @@ const IconsComponent: React.FC = () => {
 
   const handleItalic = () => {
     setIsItalic(!isItalic);
+  };
+
+  const handleListBulleted = () => {
+    setIsListBulleted(!isListBulleted);
+  };
+
+  const getListStyleType = () => {
+    return isListBulleted ? "disc" : "none";
   };
 
   return (
@@ -78,7 +87,10 @@ const IconsComponent: React.FC = () => {
           />
         </p>
         <p className="icon-wrap">
-          <FormatListBulletedIcon className="icon-left" />
+          <FormatListBulletedIcon
+            className={`icon-left ${isListBulleted ? "active" : ""}`}
+            onClick={handleListBulleted}
+          />
           <FormatListNumberedIcon className="icon-middle" />
           <FormatIndentDecreaseIcon className="icon" />
         </p>
@@ -124,6 +136,23 @@ const IconsComponent: React.FC = () => {
           tell your story online can make all the difference.
         </p>
       </CommentWrapper>
+      <BulletWrapper>
+        <ul className="text-wrap">
+          <li className="text" style={{ listStyleType: getListStyleType() }}>
+            {" "}
+            Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
+          </li>
+          <li className="text" style={{ listStyleType: getListStyleType() }}>
+            Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
+          </li>
+          <li className="text" style={{ listStyleType: getListStyleType() }}>
+            Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
+          </li>
+          <li className="text" style={{ listStyleType: getListStyleType() }}>
+            Lorem ipsum dolor sit amet, consectetur sadipscing elitr. sed.
+          </li>
+        </ul>
+      </BulletWrapper>
     </>
   );
 };
@@ -181,6 +210,14 @@ const CommentWrapper = styled.div`
     }
     &.italic {
       font-style: italic;
+    }
+  }
+`;
+
+const BulletWrapper = styled.div`
+  .text-wrap {
+    .text {
+      list-style-type: none;
     }
   }
 `;

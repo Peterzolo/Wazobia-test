@@ -19,7 +19,7 @@ const Home: React.FC = () => {
             <BlankPage />
             <Title />
             <IconsComponent />
-            <BulletPoint />
+            {/* <BulletPoint /> */}
             <VerticalLine />
             <PlusIcon />
             <Footer />
