@@ -20,6 +20,7 @@ const IconsComponent: React.FC = () => {
   const [isBold, setIsBold] = useState(false);
   const [isItalic, setIsItalic] = useState(false);
   const [isListBulleted, setIsListBulleted] = useState(false);
+  const [isListNumbered, setIsListNumbered] = useState(false);
 
   const handleAlignLeft = () => {
     setTextAlignment("left");
@@ -45,8 +46,18 @@ const IconsComponent: React.FC = () => {
     setIsListBulleted(!isListBulleted);
   };
 
+  const handleListNumbered = () => {
+    setIsListNumbered(!isListNumbered);
+  };
+
   const getListStyleType = () => {
-    return isListBulleted ? "disc" : "none";
+    if (isListBulleted) {
+      return "disc";
+    }
+    if (isListNumbered) {
+      return "decimal";
+    }
+    return "none";
   };
 
   return (
@@ -91,7 +102,10 @@ const IconsComponent: React.FC = () => {
             className={`icon-left ${isListBulleted ? "active" : ""}`}
             onClick={handleListBulleted}
           />
-          <FormatListNumberedIcon className="icon-middle" />
+          <FormatListNumberedIcon
+            className={`icon-middle ${isListNumbered ? "active" : ""}`}
+            onClick={handleListNumbered}
+          />
           <FormatIndentDecreaseIcon className="icon" />
         </p>
       </MainWrap>
