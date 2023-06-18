@@ -11,6 +11,7 @@ import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
+import ImageUpload from "./ImageUpload";
 
 const IconsComponent: React.FC = () => {
   const [textAlignment, setTextAlignment] = useState<
@@ -21,6 +22,7 @@ const IconsComponent: React.FC = () => {
   const [isItalic, setIsItalic] = useState(false);
   const [isListBulleted, setIsListBulleted] = useState(false);
   const [isListNumbered, setIsListNumbered] = useState(false);
+  const [showImageUpload, setShowImageUpload] = useState(false);
 
   const handleAlignLeft = () => {
     setTextAlignment("left");
@@ -60,6 +62,10 @@ const IconsComponent: React.FC = () => {
     return "none";
   };
 
+  const handleImageUploadClick = () => {
+    setShowImageUpload(!showImageUpload);
+  };
+
   return (
     <>
       <MainWrap>
@@ -69,7 +75,10 @@ const IconsComponent: React.FC = () => {
         </p>
         <p className="icon-wrap">
           <LinkIcon className="icon-left" />
-          <PhotoCameraBackIcon className="icon" />
+          <PhotoCameraBackIcon
+            className="icon"
+            onClick={handleImageUploadClick}
+          />{" "}
         </p>
         <p className="icon-wrap">
           <FormatAlignLeftIcon
@@ -109,6 +118,7 @@ const IconsComponent: React.FC = () => {
           <FormatIndentDecreaseIcon className="icon" />
         </p>
       </MainWrap>
+      {showImageUpload && <ImageUpload />}
       <CommentWrapper>
         <p
           className={`comment ${textAlignment} ${isBold ? "bold" : ""} ${
