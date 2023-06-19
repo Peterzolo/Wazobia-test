@@ -88,7 +88,7 @@ const IconsComponent: React.FC = () => {
     <>
       <MainWrap>
         <p className="icon-wrap">
-          <div className="text">Paragraph</div>
+          Paragraph
           <ExpandMoreIcon className="icon" onClick={handleShowDropdown} />{" "}
         </p>
         <p className="icon-wrap">
@@ -216,6 +216,15 @@ const MainWrap = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 8px;
+  @media (max-width: 704px) {
+    flex-wrap: wrap;
+  }
+  .icon-wrap-para {
+    .text-para {
+      border: 1px solid #d9d9d9;
+      padding: 5px;
+    }
+  }
   .icon-wrap {
     display: flex;
     align-items: center;
