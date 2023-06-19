@@ -23,6 +23,7 @@ const IconsComponent: React.FC = () => {
   const [isListBulleted, setIsListBulleted] = useState(false);
   const [isListNumbered, setIsListNumbered] = useState(false);
   const [showImageUpload, setShowImageUpload] = useState(false);
+  const [hyperlink, setHyperlink] = useState("");
 
   const handleAlignLeft = () => {
     setTextAlignment("left");
@@ -66,6 +67,11 @@ const IconsComponent: React.FC = () => {
     setShowImageUpload(!showImageUpload);
   };
 
+  const handleLinkClick = () => {
+    const link = prompt("Enter a URL:");
+    setHyperlink(link || "");
+  };
+
   return (
     <>
       <MainWrap>
@@ -74,7 +80,7 @@ const IconsComponent: React.FC = () => {
           <ExpandMoreIcon className="icon" />{" "}
         </p>
         <p className="icon-wrap">
-          <LinkIcon className="icon-left" />
+          <LinkIcon className="icon-left" onClick={handleLinkClick} />
           <PhotoCameraBackIcon
             className="icon"
             onClick={handleImageUploadClick}
@@ -125,8 +131,7 @@ const IconsComponent: React.FC = () => {
             isItalic ? "italic" : ""
           }`}
         >
-          {" "}
-          {/* Add textAlignment class to align the text */}
+          <a href={hyperlink}>{hyperlink ? "Hyperlink" : ""}</a>
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or maybe you have a
           creative project to share with the world. Whatever it is, the way you
