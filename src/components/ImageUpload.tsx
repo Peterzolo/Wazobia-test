@@ -10,9 +10,7 @@ const ImageUpload: React.FC = () => {
   };
 
   const handleSendImage = () => {
-    // Handle sending the image here
     if (selectedImage) {
-      // Perform the necessary action with the selectedImage
       console.log("Image sent:", selectedImage);
     }
   };
