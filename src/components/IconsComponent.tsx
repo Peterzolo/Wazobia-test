@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import LinkIcon from "@mui/icons-material/Link";
 import PhotoCameraBackIcon from "@mui/icons-material/PhotoCameraBack";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import FormatAlignRightIcon from "@mui/icons-material/FormatAlignRight";
@@ -12,6 +11,9 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatIndentDecreaseIcon from "@mui/icons-material/FormatIndentDecrease";
 import ImageUpload from "./ImageUpload";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import ParagrahDropdown from "./ParagrahDropdown";
 
 const IconsComponent: React.FC = () => {
   const [textAlignment, setTextAlignment] = useState<
@@ -24,6 +26,8 @@ const IconsComponent: React.FC = () => {
   const [isListNumbered, setIsListNumbered] = useState(false);
   const [showImageUpload, setShowImageUpload] = useState(false);
   const [hyperlink, setHyperlink] = useState("");
+  const [isIndented, setIsIndented] = useState(false);
+  const [showDropdown, setShowDropdon] = useState(false);
 
   const handleAlignLeft = () => {
     setTextAlignment("left");
@@ -72,15 +76,27 @@ const IconsComponent: React.FC = () => {
     setHyperlink(link || "");
   };
 
+  const handleIndentation = () => {
+    setIsIndented(!isIndented);
+  };
+
+  const handleShowDropdown = () => {
+    setShowDropdon(!showDropdown);
+  };
+
   return (
     <>
       <MainWrap>
         <p className="icon-wrap">
           <div className="text">Paragraph</div>
-          <ExpandMoreIcon className="icon" />{" "}
+          <ExpandMoreIcon className="icon" onClick={handleShowDropdown} />{" "}
         </p>
         <p className="icon-wrap">
-          <LinkIcon className="icon-left" onClick={handleLinkClick} />
+          <FontAwesomeIcon
+            icon={faLink}
+            className="icon-left"
+            onClick={handleLinkClick}
+          />
           <PhotoCameraBackIcon
             className="icon"
             onClick={handleImageUploadClick}
@@ -121,15 +137,22 @@ const IconsComponent: React.FC = () => {
             className={`icon-middle ${isListNumbered ? "active" : ""}`}
             onClick={handleListNumbered}
           />
-          <FormatIndentDecreaseIcon className="icon" />
+          <FormatIndentDecreaseIcon
+            className={`icon ${isIndented ? "active" : ""}`}
+            onClick={handleIndentation}
+          />
         </p>
       </MainWrap>
+
+      {showDropdown && <ParagrahDropdown />}
+
       {showImageUpload && <ImageUpload />}
+
       <CommentWrapper>
         <p
           className={`comment ${textAlignment} ${isBold ? "bold" : ""} ${
             isItalic ? "italic" : ""
-          }`}
+          } ${isIndented ? "indented" : ""}`}
         >
           <a href={hyperlink}>{hyperlink ? "Hyperlink" : ""}</a>
           It all begins with an idea. Maybe you want to launch a business. Maybe
@@ -143,7 +166,7 @@ const IconsComponent: React.FC = () => {
         <p
           className={`comment ${textAlignment} ${isBold ? "bold" : ""} ${
             isItalic ? "italic" : ""
-          }`}
+          } ${isIndented ? "indented" : ""}`}
         >
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
@@ -157,7 +180,7 @@ const IconsComponent: React.FC = () => {
         <p
           className={`comment ${textAlignment} ${isBold ? "bold" : ""} ${
             isItalic ? "italic" : ""
-          }`}
+          } ${isIndented ? "indented" : ""}`}
         >
           It all begins with an idea. Maybe you want to launch a business. Maybe
           you want to turn a hobby into something more. Or mayby you have a
@@ -240,6 +263,9 @@ const CommentWrapper = styled.div`
     }
     &.italic {
       font-style: italic;
+    }
+    &.indented {
+      margin-left: 20px;
     }
   }
 `;
