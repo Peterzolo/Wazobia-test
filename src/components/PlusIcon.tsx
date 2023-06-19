@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import AddIcon from "@mui/icons-material/Add";
 import PlusDropdown from "./PlusDropdown";
 
-const PlusIcon = () => {
+const PlusIcon: React.FC = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
   const toggleDropdown = () => {

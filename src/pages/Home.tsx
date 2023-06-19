@@ -3,7 +3,6 @@ import { styled } from "styled-components";
 import BlankPage from "../components/BlankPage";
 import Title from "../components/Title";
 import IconsComponent from "../components/IconsComponent";
-import BulletPoint from "../components/BulletPoint";
 import VerticalLine from "../components/VerticalLine";
 import PlusIcon from "../components/PlusIcon";
 import Footer from "../components/Footer";
